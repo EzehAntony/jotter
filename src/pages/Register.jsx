@@ -10,7 +10,7 @@ function Register() {
     <Authentication
       text={"Already"}
       action="login"
-      path={"http://localhost:5000/api/auth/register"}
+      path={"https://crayonnne-jotter-server.herokuapp.com/api/auth/register"}
       to={"/login"}
     />
   );
