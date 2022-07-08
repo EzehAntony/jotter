@@ -1,0 +1,36 @@
+.popUp {
+  width: 50%;
+  height: 60vh;
+  background-color: white;
+  position: absolute;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+header {
+  color: white;
+  text-align: center;
+}
+
+.popUp input {
+  border: 0;
+  height: 75%;
+  background-color: red;
+  outline: none;
+  border: none;
+  border-radius: 0;
+}
+
+.popUp input:hover {
+  box-shadow: none;
+}
+.popUp p {
+  padding: 10px;
+  font-weight: ;
+}
+
+@media (max-width: 701px) {
+  .popUp {
+    width: 80%;
+  }
+}

@@ -1,0 +1,99 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.card {
+  position: relative;
+  max-width: 200px;
+  max-height: 250px;
+  height: 500px;
+  width: 500px;
+  border-radius: 10px;
+  margin: 10px;
+  transition: 0.4s;
+  cursor: pointer;
+  background: #4d4d4d;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card:hover > header {
+  background-color: gray;
+  transition: .4s;
+}
+
+header {
+  color: white;
+  background-color: deeppink;
+  border-radius: 10px 10px 0 0;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 10px;
+}
+
+.content {
+  padding: 5%;
+  text-align: left;
+  font-weight: 700;
+  height: calc(100% - 20%);
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.cardEdit {
+  width: 30px;
+  position: absolute;
+  bottom: 5px;
+  right: 40px;
+  transition: 0.4s;
+}
+
+.cardEdit:hover {
+  transform: scale(1.2);
+}
+
+
+.cardDelete {
+  width: 30px;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  transition: 0.4s;
+}
+
+.cardDelete:hover {
+  transform: scale(1.2);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+@media (max-width: 801px) {
+  .card {
+    margin: 2%;
+    max-width: 160px;
+    max-height: 200px;
+  }
+
+  header {
+    height: 25%;
+    font-size: 15px;
+  }
+
+  .content {
+    height: calc(100% - 20%);
+  }
+}

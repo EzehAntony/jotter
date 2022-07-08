@@ -1,0 +1,158 @@
+import { React, useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Header from "../components/Header";
+import useFetch from "../useFetch";
+import axios from "axios";
+import "./note.css";
+import Error from "../components/Error";
+import Loading from "../components/Loading";
+
+function Note() {
+  document.title = "Note";
+
+  const { id } = useParams();
+  const noteId = id.split(":")[1];
+  const userId = JSON.parse(localStorage.getItem("user"))._id;
+  /* *************** d = delete *********** */
+  const [dLoading, setDloading] = useState(null);
+  const [dError, setDerror] = useState(null);
+  const [dData, setDdata] = useState(null);
+  const [uLoading, setUloading] = useState(null);
+  const [uError, setUerror] = useState(null);
+  const [uData, setUdata] = useState(null);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const navigate = useNavigate();
+  /* ************************************** */
+  const [data, setData] = useState("null");
+  const [loading, setLoading] = useState("null");
+  const [error, setError] = useState("null");
+  const url = `http://localhost:5000/api/note/delete/${userId}/find?note=${noteId}`;
+
+  useEffect(() => {
+    fetchNote();
+  }, []);
+
+  const fetchNote = async () => {
+    try {
+      setLoading(true);
+      setError(false);
+      await axios({
+        url: `http://localhost:5000/api/note/get/${userId}/find?note=${noteId}`,
+        method: "get",
+        withCredentials: true,
+      }).then((res) => {
+        setTitle(res.data.title);
+        setContent(res.data.content);
+        setLoading(false);
+        setError(false);
+      });
+    } catch (error) {
+      setError(error);
+      setLoading(false);
+    }
+  };
+
+  const deleteNote = async (e) => {
+    e.preventDefault();
+    setDloading(true);
+    setDerror(false);
+
+    try {
+      await axios({
+        url: url,
+        method: "delete",
+        withCredentials: true,
+      }).then((res) => {
+        setDloading(false);
+        setDerror(false);
+        setDdata("Note deleted successfully");
+        navigate("/home");
+      });
+    } catch (error) {
+      setDerror(error);
+      setDloading(false);
+    }
+  };
+  const update = async (e) => {
+    console.log(content, title)
+    try {
+      e.preventDefault();
+      setUloading(true);
+      setUerror(false);
+      await axios({
+        url: `https://git.heroku.com/crayonnejotter.git/api/note/update/${userId}/find?note=${noteId}`,
+        method: "PUT",
+        withCredentials: true,
+        data: {
+          title: title,
+          content: content,
+        },
+      }).then((res) => {
+        console.log(res);
+        console.log("sent");
+        setUloading(false);
+        setUerror(false);
+        setUdata("Note updated successfully");
+        navigate("/home");
+      });
+    } catch (error) {
+      setUerror(error);
+      setUloading(false);
+    }
+  };
+
+  return (
+    <div className="notePage">
+      <Header />
+      {error && <Error data={error} />}
+      {dError && <Error data={dError} />}
+      {uError && <Error data={uError} />}
+      <div className="noteContent">
+        <textarea
+          className="noteContentTitle"
+          placeholder="Title"
+          required
+          type="text"
+          value={title}
+          onChange={(e) => {
+            setTitle(e.target.value);
+          }}
+        >
+          {data?.title}
+        </textarea>
+
+        {loading && <Loading />}
+        {uLoading && <Loading />}
+
+        {
+          <textarea
+            placeholder="Note Content"
+            className="noteText"
+            type="text"
+            value={content}
+            onChange={(e) => {
+              setContent(e.target.value);
+            }}
+          />
+        }
+
+        <div className="notePageButtons">
+          <button type="button" onClick={update} className="notePageSave">
+            Save
+          </button>
+          <button
+            type="button"
+            onClick={deleteNote}
+            style={{ background: "white", color: "deeppink" }}
+            className="notePageSave"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Note;

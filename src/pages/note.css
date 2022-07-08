@@ -1,0 +1,58 @@
+.noteContentTitle {
+  color: deeppink;
+  text-align: center;
+  font-weight: 800;
+  align-items: center;
+  padding: 20px 0 0 0;
+  font-size: 30px;
+  min-height: 50px;
+  resize: none;
+  margin: 20px 0 0 0;
+  background-color: rgb(26, 26, 26);
+  width: 80%;
+  outline: none;
+  border: 0;
+}
+
+.noteContent {
+  background-color: black;
+  resize: none;
+}
+
+.noteText {
+  min-height: 500px;
+  color: white;
+  background-color: rgb(26, 26, 26);
+  width: 80%;
+  padding: 20px 5%;
+  border: 0;
+  outline: none;
+  border: 0;
+  resize: none;
+}
+
+.notePageButtons {
+  background-color: black;
+  height: 50px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px 10%;
+}
+
+.notePageSave {
+  width: 80px;
+  height: 40px;
+  background: deeppink;
+  color: white;
+  margin: 0 5px;
+}
+
+.notePageEdit {
+  width: 80px;
+  height: 40px;
+  background: white;
+  color: black;
+}

@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  background-color: black;
+  min-height: calc(100vh - 50px);
+  padding: 0 10%;
+}
+
+.main .searchBar {
+  border: 0;
+  height: 50px;
+  width: 80%;
+  max-width: 600px;
+  margin: 20px 0 0;
+  padding: 0 0 0 10px;outline: none;
+  font-weight: 600;
+  color: deeppink;
+
+}
+
+.loading {
+  height: 50px;
+  color: deeppink;
+  background-color: black;
+  
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 50px 0;
+}
+
+.cards-div {
+  margin: 5px;
+}
+
+@media (max-width: 801px) {
+  .main {
+    padding: 0;
+  }
+}
