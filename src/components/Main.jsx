@@ -6,7 +6,7 @@ import useFetch from "../useFetch";
 import RoundedBtn from "../components/RoundedBtn";
 import { Link } from "react-router-dom";
 import Loading from "./Loading";
-
+import ErrorPage from "../pages/ErrorPage";
 function Main() {
   const { user, setUser } = useContext(UserContext);
   const url = `/note/get/all/${JSON.parse(user)._id}`;
@@ -17,8 +17,8 @@ function Main() {
   return (
     <div className="main">
       {loading && <Loading />}
-      {data === [{}] && <div className="loading">No data</div>}
-      {error && <div className="loading">{error}</div>}
+      {error &&<ErrorPage />}
+
       {data && (
         <input
           className="searchBar"
@@ -37,7 +37,7 @@ function Main() {
         {data &&
           data
             .filter((note) => {
-              if (input == "") {
+              if (input === "") {
                 return note;
               } else if (
                 note.title.toLowerCase().includes(input.toLowerCase())

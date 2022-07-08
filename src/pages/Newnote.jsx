@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Loading from "../components/Loading";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ErrorPage from "../pages/ErrorPage";
 
 function Newnote() {
   document.title = "New Note";
@@ -13,14 +14,12 @@ function Newnote() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const [success, setSuccess] = useState(false);
   const userId = JSON.parse(localStorage.getItem("user"))._id;
-  const url = `https://git.heroku.com/crayonnejotter.git/api/note/create/${userId}`;
+  const url = `http://localhost:5000/api/note/create/${userId}`;
 
   const submit = async (e) => {
     try {
       setLoading(true);
-      setSuccess(false);
       setError(false);
       e.preventDefault();
       await axios({
@@ -34,11 +33,9 @@ function Newnote() {
       }).then((res) => {
         setError(false);
         setLoading(false);
-        setSuccess(true);
         navigate("/");
       });
     } catch (err) {
-      setSuccess(false);
       setLoading(false);
       setError(err);
       console.log(err);
@@ -47,6 +44,7 @@ function Newnote() {
 
   return (
     <div className="notePage">
+      {error && <ErrorPage />}
       <Header />
       <div className="noteContent">
         {

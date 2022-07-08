@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import "./dashboard.css";
 
+
 function Dashboard() {
   document.title = "Dashboard"
   const user = JSON.parse(localStorage.getItem("user"));
@@ -16,6 +17,8 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
+
+
       <Header />
 
       <div className="dashboardMainContainer">

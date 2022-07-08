@@ -17,7 +17,7 @@ const useFetch = (url, method) => {
     setError(false);
     try {
       await axios({
-        url: `https://git.heroku.com/crayonnne-jotter-server.git/api${url}`,
+        url: `http://localhost:5000/api${url}`,
         method: method,
         withCredentials: true,
       }).then((res) => {

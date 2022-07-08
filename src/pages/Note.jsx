@@ -1,11 +1,11 @@
 import { React, useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header";
-import useFetch from "../useFetch";
 import axios from "axios";
 import "./note.css";
 import Error from "../components/Error";
 import Loading from "../components/Loading";
+import ErrorPage from "../pages/ErrorPage";
 
 function Note() {
   document.title = "Note";
@@ -14,12 +14,9 @@ function Note() {
   const noteId = id.split(":")[1];
   const userId = JSON.parse(localStorage.getItem("user"))._id;
   /* *************** d = delete *********** */
-  const [dLoading, setDloading] = useState(null);
   const [dError, setDerror] = useState(null);
-  const [dData, setDdata] = useState(null);
   const [uLoading, setUloading] = useState(null);
   const [uError, setUerror] = useState(null);
-  const [uData, setUdata] = useState(null);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const navigate = useNavigate();
@@ -55,7 +52,6 @@ function Note() {
 
   const deleteNote = async (e) => {
     e.preventDefault();
-    setDloading(true);
     setDerror(false);
 
     try {
@@ -64,24 +60,21 @@ function Note() {
         method: "delete",
         withCredentials: true,
       }).then((res) => {
-        setDloading(false);
         setDerror(false);
-        setDdata("Note deleted successfully");
         navigate("/home");
       });
     } catch (error) {
       setDerror(error);
-      setDloading(false);
     }
   };
   const update = async (e) => {
-    console.log(content, title)
+    console.log(content, title);
     try {
       e.preventDefault();
       setUloading(true);
       setUerror(false);
       await axios({
-        url: `https://git.heroku.com/crayonnejotter.git/api/note/update/${userId}/find?note=${noteId}`,
+        url: `http://localhost:5000/api/note/update/${userId}/find?note=${noteId}`,
         method: "PUT",
         withCredentials: true,
         data: {
@@ -93,7 +86,6 @@ function Note() {
         console.log("sent");
         setUloading(false);
         setUerror(false);
-        setUdata("Note updated successfully");
         navigate("/home");
       });
     } catch (error) {
@@ -105,7 +97,7 @@ function Note() {
   return (
     <div className="notePage">
       <Header />
-      {error && <Error data={error} />}
+      {error && <ErrorPage />}
       {dError && <Error data={dError} />}
       {uError && <Error data={uError} />}
       <div className="noteContent">

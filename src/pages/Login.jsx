@@ -8,7 +8,7 @@ function Login() {
     <Authentication
       text={"Don't"}
       action="register"
-      path={"https://git.heroku.com/crayonnejotter.git/api/auth/login"}
+      path={"http://localhost:5000/api/auth/login"}
       to={"/register"}
     />
   );

@@ -44,10 +44,11 @@ const Authentication = ({ text, action, path, to }) => {
       setSuccess(false);
       setLoading(false);
       console.log(err);
-      if (typeof (err.response.data == "object")) {
-        setError("Network error");
+      switch(err.response.status) {
+        case 500: return setError("Netowk error");
+        case 403: return setError("Invalid username or password");
+        case 404: return setError("Not found");
       }
-      setError(err.response.data);
     }
   };
 
