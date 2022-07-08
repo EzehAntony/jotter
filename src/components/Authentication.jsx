@@ -4,6 +4,7 @@ import axios from "axios";
 import "./authentication.css";
 import { UserContext } from "../UserContext";
 import Loading from "./Loading";
+
 import Error from "./Error";
 
 const Authentication = ({ text, action, path, to }) => {
