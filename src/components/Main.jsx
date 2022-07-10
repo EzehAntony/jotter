@@ -17,7 +17,7 @@ function Main() {
   return (
     <div className="main">
       {loading && <Loading />}
-      {error && <h1>error</h1>}
+      {error && <ErrorPage />}
 
       {data && (
         <input
