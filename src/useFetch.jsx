@@ -29,7 +29,6 @@ const useFetch = (url, method) => {
         setError(false);
       });
     } catch (err) {
-      console.log(err);
       if (err.response.status == "500") {
         setError("Network error");
       } else {
