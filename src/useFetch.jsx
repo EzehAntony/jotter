@@ -21,10 +21,6 @@ const useFetch = (url, method) => {
         url: `https://crayonnne-jotter-server.herokuapp.com/api${url}`,
         method: method,
         withCredentials: true,
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
       }).then((res) => {
         setHead(res.data.title);
         setContent(res.data.content);
