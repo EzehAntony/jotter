@@ -24,7 +24,6 @@ const Authentication = ({ text, action, path, to }) => {
       await axios({
         url: path,
         method: "post",
-        withCredentials: true,
         data: {
           username: username,
           password: password,

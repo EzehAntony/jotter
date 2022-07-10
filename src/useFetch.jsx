@@ -20,9 +20,7 @@ const useFetch = (url, method) => {
       await axios({
         url: `https://crayonnne-jotter-server.herokuapp.com/api${url}`,
         method: method,
-        headers: {
-          "Access-Control-Allow-Credentials": true,
-        },
+        withCredentials: true,
       }).then((res) => {
         setHead(res.data.title);
         setContent(res.data.content);
