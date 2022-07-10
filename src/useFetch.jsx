@@ -15,7 +15,7 @@ const useFetch = (url, method) => {
   const getData = async (url, method) => {
     setLoading(true);
     setError(false);
-    console.log(url)
+
     try {
       await axios({
         url: `https://crayonnne-jotter-server.herokuapp.com/api${url}`,
@@ -29,6 +29,7 @@ const useFetch = (url, method) => {
         setError(false);
       });
     } catch (err) {
+      console.log(err);
       if (err.response.status == "500") {
         setError("Network error");
       } else {
