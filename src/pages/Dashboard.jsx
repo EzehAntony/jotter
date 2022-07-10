@@ -11,8 +11,8 @@ function Dashboard() {
 
   const logOut = (e) => {
     localStorage.removeItem("user");
-    window.location.reload()
     navigate("/");
+    window.location.reload()
   };
 
   return (
