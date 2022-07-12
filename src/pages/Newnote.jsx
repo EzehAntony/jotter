@@ -15,7 +15,7 @@ function Newnote() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const userId = JSON.parse(localStorage.getItem("user"))._id;
-  const url = `http://localhost:5000/api/note/create/${userId}`;
+  const url = `/api/note/create/${userId}`;
 
   const submit = async (e) => {
     try {
