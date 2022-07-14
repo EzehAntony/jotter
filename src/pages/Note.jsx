@@ -24,7 +24,7 @@ function Note() {
   const [data, setData] = useState("null");
   const [loading, setLoading] = useState("null");
   const [error, setError] = useState("null");
-  const url = `/api/note/delete/${userId}/find?note=${noteId}`;
+  const url = `https://crayonnejotter.herokuapp.com/api/note/delete/${userId}/find?note=${noteId}`;
 
   useEffect(() => {
     fetchNote();

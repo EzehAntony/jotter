@@ -9,7 +9,9 @@ import Loading from "./Loading";
 import ErrorPage from "../pages/ErrorPage";
 function Main() {
   const { user, setUser } = useContext(UserContext);
-  const url = `/note/get/all/${JSON.parse(user)._id}`;
+  const url = `https://crayonnejotter.herokuapp.com/api/note/get/all/${
+    JSON.parse(user)._id
+  }`;
   const method = "get";
   const { data, loading, error } = useFetch(url, method);
   const [input, setInput] = useState("");
