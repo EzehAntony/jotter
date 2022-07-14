@@ -68,13 +68,12 @@ function Note() {
     }
   };
   const update = async (e) => {
-    console.log(content, title);
     try {
       e.preventDefault();
       setUloading(true);
       setUerror(false);
       await axios({
-        url: `http://localhost:5000/api/note/update/${userId}/find?note=${noteId}`,
+        url: `https://crayonnejotter.herokuapp.com/api/note/update/${userId}/find?note=${noteId}`,
         method: "PUT",
         withCredentials: true,
         data: {
@@ -82,8 +81,6 @@ function Note() {
           content: content,
         },
       }).then((res) => {
-        console.log(res);
-        console.log("sent");
         setUloading(false);
         setUerror(false);
         navigate("/home");
