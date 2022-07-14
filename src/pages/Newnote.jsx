@@ -24,7 +24,7 @@ function Newnote() {
       e.preventDefault();
       await axios({
         url: url,
-        method: "post",
+        method: "POST",
         withCredentials: true,
         data: {
           title: head,

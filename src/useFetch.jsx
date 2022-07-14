@@ -18,7 +18,7 @@ const useFetch = (url, method) => {
 
     try {
       await axios({
-        url: `/api${url}`,
+        url: url,
         method: method,
         withCredentials: true,
       }).then((res) => {

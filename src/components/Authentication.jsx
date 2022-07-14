@@ -23,9 +23,8 @@ const Authentication = ({ text, action, path, to }) => {
       setError(null);
       await axios({
         url: path,
-        method: "post",
+        method: "POST",
         withCredentials: true,
-        credentials: "include",
         data: {
           username: username,
           password: password,
@@ -45,17 +44,19 @@ const Authentication = ({ text, action, path, to }) => {
       setSuccess(false);
       setLoading(false);
       console.log(err);
-      switch(err.response.status) {
-        case 500: return setError("Netowk error");
-        case 403: return setError("Invalid username or password");
-        case 404: return setError("Not found");
+      switch (err.response.status) {
+        case 500:
+          return setError("Netowk error");
+        case 403:
+          return setError("Invalid username or password");
+        case 404:
+          return setError("Not found");
       }
     }
   };
 
   return (
     <div className="login">
-
       <div className="left">
         <p>
           {text} have an account? <Link to={to}> {action} </Link>

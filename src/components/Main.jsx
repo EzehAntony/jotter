@@ -12,7 +12,7 @@ function Main() {
   const url = `https://crayonnejotter.herokuapp.com/api/note/get/all/${
     JSON.parse(user)._id
   }`;
-  const method = "get";
+  const method = "GET";
   const { data, loading, error } = useFetch(url, method);
   const [input, setInput] = useState("");
 
