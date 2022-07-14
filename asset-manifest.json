@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/https//Ezehantony.github.io/jotter/static/css/main.6a868185.css",
+    "main.js": "/https//Ezehantony.github.io/jotter/static/js/main.f7b2f186.js",
+    "index.html": "/https//Ezehantony.github.io/jotter/index.html",
+    "main.6a868185.css.map": "/https//Ezehantony.github.io/jotter/static/css/main.6a868185.css.map",
+    "main.f7b2f186.js.map": "/https//Ezehantony.github.io/jotter/static/js/main.f7b2f186.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6a868185.css",
+    "static/js/main.f7b2f186.js"
+  ]
+}
