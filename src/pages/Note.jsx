@@ -35,7 +35,7 @@ function Note() {
       setLoading(true);
       setError(false);
       await axios({
-        url: `http://localhost:5000/api/note/get/${userId}/find?note=${noteId}`,
+        url: `https://crayonnejotter.herokuapp.com/api/note/get/${userId}/find?note=${noteId}`,
         method: "get",
         withCredentials: true,
       }).then((res) => {
