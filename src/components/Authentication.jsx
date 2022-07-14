@@ -24,7 +24,8 @@ const Authentication = ({ text, action, path, to }) => {
       await axios({
         url: path,
         method: "post",
-        headers:{token: "Bearer "+user.token},
+        withCredentials: true,
+        credentials: "include",
         data: {
           username: username,
           password: password,
